@@ -1,9 +1,29 @@
-# cpbl-crawler
+# cpbl-crawler(中職近況查詢)
 
+## 簡介：
 藉由爬蟲及時查詢中職球隊近況
 
-使用 python 的 requests 及 beautufulSoup 套件抓取球隊資料
+提供中職四支球隊整理後資料查詢
 
-並整理出各隊球員排行榜及球隊近況
+<p float="left">
+  <img src="https://github.com/BruceJian43/cpbl-crawler/blob/master/asset/1.png" width="360" height="270">
 
-使用 tkinter 製作出介面呈現結果
+  <img src="https://github.com/BruceJian43/cpbl-crawler/blob/master/asset/2.png" width="360" height="270">
+</p>
+
+可查詢該場次特定球員表現
+
+<p float="left">
+<img src="https://github.com/BruceJian43/cpbl-crawler/blob/master/asset/3.png" width="360" height="270">
+
+<img src="https://github.com/BruceJian43/cpbl-crawler/blob/master/asset/4.png" width="360" height="270">
+</p>
+
+## 執行：
+``python crawler.py``
+
+## 所使用套件：
+* tkinter
+* requests
+* BeautifulSoup
+* heapq
