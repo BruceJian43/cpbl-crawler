@@ -26,4 +26,3 @@
 * tkinter
 * requests
 * BeautifulSoup
-* heapq

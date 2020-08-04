@@ -3,6 +3,7 @@ import heapq as hp
 from bs4 import BeautifulSoup
 
 import cpbl_info
+import windows_setting
 
 def find_target_title_index_from_thead(target_list, thead):
     title_idx = []
@@ -19,10 +20,10 @@ def get_current_standing_data(selected_team):
     soup = BeautifulSoup(response.text, 'html.parser')
 
     standing_raw_data_title = soup.table.tr
-    target_standing_title_idx = find_target_title_index_from_thead(cpbl_info.STANDING_DATA_TITLE, standing_raw_data_title)
+    target_standing_title_idx = find_target_title_index_from_thead(cpbl_info.STANDING_DATA_TITLE[0], standing_raw_data_title)
 
     res = []
-    team_name_idx = cpbl_info.STANDING_DATA_TITLE.index('球隊')
+    team_name_idx = cpbl_info.STANDING_DATA_TITLE[0].index('球隊')
     replaced_char = ['\r', '\n', '\t', ' ']
     for team_data in standing_raw_data_title.next_siblings:
         if type(team_data) == type(standing_raw_data_title):
@@ -33,7 +34,7 @@ def get_current_standing_data(selected_team):
                 current_idx += 1
             for char in replaced_char:
                 res[team_name_idx] = res[team_name_idx].replace(char, '')
-            if res[team_name_idx] == cpbl_info.TEAM_LIST[selected_team]:
+            if res[team_name_idx] == cpbl_info.TEAM_LIST[0][selected_team]:
                 break
             else:
                 res.clear()
@@ -42,10 +43,10 @@ def get_current_standing_data(selected_team):
 def get_current_ranking(selected_team, is_hitter):
     if is_hitter:
         url = cpbl_info.HITTER_RANKING_URL[selected_team]
-        target_title = cpbl_info.HITTER_RANKING_TITLE
+        target_title = cpbl_info.HITTER_RANKING_TITLE[0]
     else:
         url = cpbl_info.PITCHER_RANKING_URL[selected_team]
-        target_title = cpbl_info.PITCHER_RANKING_TITLE
+        target_title = cpbl_info.PITCHER_RANKING_TITLE[0]
 
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
